@@ -20,7 +20,7 @@ class NoteController extends Controller
     }
     public function card_show($id){
     	$card=Card::find($id);
-    	return view('welcome',compact('card'));
+    	return view('card_show',compact('card'));
 
     }
     public function index_card(){
@@ -30,6 +30,9 @@ class NoteController extends Controller
 
     public function store(Request $rq, Card $card,$id){
     	//return request()->all();
+    	$this->validate($rq,
+    		['body'=>'required|min:6']// rouls
+    	);
     	$note=new Note;
     	$note->body=$rq->body;
     	$card= Card::find($id);
@@ -40,6 +43,7 @@ class NoteController extends Controller
     	return view('note',compact('note'));
     }
     public function update(Note $note, Request $request ){
+
     	$note->update($request->all());
     	return back();
     }

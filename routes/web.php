@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware'=>['web']], function(){
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,3 +24,7 @@ Route::post('card/{id}/notes','NoteController@store');
 Route::get('note/{note}/edit','NoteController@edit');
 Route::patch('note/{note}/update','NoteController@update');
 
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
