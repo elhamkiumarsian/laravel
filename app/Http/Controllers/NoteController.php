@@ -37,6 +37,7 @@ class NoteController extends Controller
     	$note->body=$rq->body;
     	$card= Card::find($id);
     	$card->notes()->save($note);
+    	flash('created note', 'level');
     	return back();
     }
     public function edit(Note $note){

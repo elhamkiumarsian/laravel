@@ -23,8 +23,9 @@ Route::post('card/{id}/notes','NoteController@store');
 
 Route::get('note/{note}/edit','NoteController@edit');
 Route::patch('note/{note}/update','NoteController@update');
-
-});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+});
+
