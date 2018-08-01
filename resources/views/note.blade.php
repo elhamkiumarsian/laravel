@@ -9,6 +9,13 @@
 		{{ method_field('PATCH')}}
 
 		<input name='body' value={{$note->body}}>
+		<div>
+		
+			<h4>Tags</h4>
+				@foreach($note->tags as $tag)
+				<li>{{$tag->name}}</li>
+				@endforeach
+		</div>
 		<button type='submit'>update Note</button>
 	</form>
 	

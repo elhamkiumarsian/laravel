@@ -11,4 +11,8 @@ class Note extends Model
     {
     	return $this->belongsTo(Card::class);
     }
+     public function tags()
+    {
+    	return $this->belongsToMany(Tag::class);
+    }
 }
